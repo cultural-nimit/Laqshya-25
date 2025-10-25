@@ -1,10 +1,12 @@
 :root {
-    --bg-color: #0A0A0A;
-    --primary-color: #1A1A1A;
-    --accent-red: #B91C1C;
-    --accent-orange: #F59E0B;
-    --text-color: #9CA3AF;
-    --heading-color: #F3F4F6;
+    /* --- NEW COLOR THEME --- */
+    --bg-color: #03081a; /* Very dark blue/black */
+    --primary-color: #0b132b; /* Dark blue */
+    --accent-red: #3c6e71; /* Teal/Blue-Green accent (Replacing red) */
+    --accent-orange: #5bc0de; /* Light blue/Cyan accent (Replacing orange) */
+    --text-color: #adb5bd; /* Cool light gray */
+    --heading-color: #f8f9fa; /* Bright off-white */
+    /* ----------------------- */
     --font-heading: 'Bebas Neue', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -22,18 +24,14 @@ html {
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
-    /* Fallback color */
     color: var(--text-color);
     overflow-x: hidden;
 
-    /* --- UPDATED BACKGROUND --- */
-    background-image: linear-gradient(rgba(10, 10, 10, 0.43), rgba(10, 10, 10, 0.501)), url(bg1.png);
+    /* --- BACKGROUND IMAGE (Assuming you still want it) --- */
+    background-image: linear-gradient(rgba(3, 8, 26, 0.6), rgba(3, 8, 26, 0.7)), url(bg1.jpg); /* Adjusted gradient colors */
     background-size: cover;
-    /* Makes the image cover the entire screen */
     background-position: center;
-    /* Centers the image */
     background-attachment: fixed;
-    /* Fixes the image, so it doesn't scroll */
     /* --- END UPDATE --- */
 }
 
@@ -45,7 +43,7 @@ body::after {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.6); /* Slightly darker shadow */
 }
 
 .container {
@@ -66,9 +64,9 @@ body::after {
 }
 
 .header.scrolled {
-    background: rgba(10, 10, 10, 0.7);
+    background: rgba(3, 8, 26, 0.7); /* Darker scrolled background */
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(185, 28, 28, 0.2);
+    border-bottom: 1px solid rgba(60, 110, 113, 0.3); /* Use new accent color for border */
 }
 
 .navbar {
@@ -110,7 +108,7 @@ body::after {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: var(--accent-red);
+    background-color: var(--accent-red); /* New accent color */
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease-out;
@@ -145,19 +143,20 @@ body::after {
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0.1;
+    opacity: 0.1; /* Keep low opacity for subtlety */
     animation: slow-pan 60s linear infinite alternate;
 }
 
 .hero-bg-layer.smoke {
     background-image: url(https://www.transparenttextures.com/patterns/realistic-white-smoke.png);
+    opacity: 0.05; /* Make smoke even subtler */
 }
 
 .hero-bg-layer.embers {
-    background-image: url(https://www.transparenttextures.com/patterns/carbon-fibre.png);
-    /* Simulating embers */
-    opacity: 0.05;
-    animation-duration: 40s;
+    /* Maybe remove or replace this if it clashes with the blue theme */
+     background-image: url(https://www.transparenttextures.com/patterns/wavecut.png); /* Example replacement */
+     opacity: 0.03;
+     animation-duration: 40s;
 }
 
 @keyframes slow-pan {
@@ -192,12 +191,11 @@ body::after {
     width: 1100px;
     height: auto;
     margin: 0 auto 20px auto;
-    filter: drop-shadow(0 0 20px rgba(185, 28, 28, 0.6));
+    filter: drop-shadow(0 0 20px rgba(91, 192, 222, 0.4)); /* Lighter blue drop shadow */
     animation: fadeInUp 0.8s ease-out 0.2s;
     animation-fill-mode: backwards;
 }
 
-/* --- REVERTED HERO P STYLING --- */
 .hero p {
     font-size: 1.1rem;
     margin: 0 auto 40px auto;
@@ -210,46 +208,47 @@ body::after {
 .cta-button {
     display: inline-block;
     padding: 14px 32px;
-    background: var(--accent-red);
+    background: var(--accent-red); /* New accent color */
     color: var(--heading-color);
     text-decoration: none;
     font-weight: 700;
     border-radius: 4px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 25px rgba(185, 28, 28, 0.6);
+    box-shadow: 0 0 25px rgba(60, 110, 113, 0.6); /* New accent shadow */
     font-size: 1.1rem;
     text-transform: uppercase;
     animation: fadeInUp 0.8s ease-out 0.6s, pulse 2s infinite 1s;
     animation-fill-mode: backwards;
 }
 
+/* Updated Pulse Animation */
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 25px rgba(185, 28, 28, 0.6);
+        box-shadow: 0 0 25px rgba(60, 110, 113, 0.6); /* Use new accent color */
     }
 
     50% {
-        box-shadow: 0 0 35px rgba(185, 28, 28, 0.8);
+        box-shadow: 0 0 35px rgba(91, 192, 222, 0.8); /* Use lighter accent for pulse */
     }
 
     100% {
-        box-shadow: 0 0 25px rgba(185, 28, 28, 0.6);
+        box-shadow: 0 0 25px rgba(60, 110, 113, 0.6); /* Use new accent color */
     }
 }
 
 
 .cta-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 35px rgba(185, 28, 28, 0.7);
+    background: var(--accent-orange); /* Lighter blue on hover */
+    box-shadow: 0 5px 35px rgba(91, 192, 222, 0.7); /* Lighter blue shadow on hover */
 }
 
 /* Banner Carousel Section */
 .banner-carousel-section {
     padding: 130px 0 50px 0;
-    background-color: rgba(26, 26, 26, 0.5);
-    /* --- UPDATED OPACITY --- */
-    border-top: 1px solid rgba(185, 28, 28, 0.2);
-    border-bottom: 1px solid rgba(185, 28, 28, 0.2);
+    background-color: rgba(11, 19, 43, 0.6); /* Slightly lighter dark blue */
+    border-top: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
+    border-bottom: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
 }
 
 .banner-carousel {
@@ -282,7 +281,7 @@ body::after {
 .slide img {
     width: 100%;
     display: block;
-    object-fit: fill;
+    object-fit: fill; /* Consider 'cover' if images get distorted */
     height: 600px;
     border-radius: 8px;
 }
@@ -293,7 +292,7 @@ body::after {
     left: 0;
     right: 0;
     padding: 40px;
-    background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 20%, transparent);
+    background: linear-gradient(to top, rgba(3, 8, 26, 0.95) 20%, transparent); /* Darker gradient */
     color: var(--heading-color);
     text-align: left;
     border-radius: 0 0 8px 8px;
@@ -314,7 +313,7 @@ body::after {
 }
 
 .slide-cta {
-    background: var(--accent-red);
+    background: var(--accent-red); /* New accent color */
     color: var(--heading-color);
     text-decoration: none;
     padding: 10px 25px;
@@ -324,7 +323,7 @@ body::after {
 }
 
 .slide-cta:hover {
-    background: var(--accent-orange);
+    background: var(--accent-orange); /* Lighter blue hover */
     transform: scale(1.05);
 }
 
@@ -332,7 +331,7 @@ body::after {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(10, 10, 10, 0.5);
+    background-color: rgba(11, 19, 43, 0.5); /* Dark blue controls */
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
     font-size: 2rem;
@@ -346,7 +345,7 @@ body::after {
 }
 
 .carousel-control:hover {
-    background-color: rgba(10, 10, 10, 0.8);
+    background-color: rgba(11, 19, 43, 0.8);
 }
 
 .carousel-control.prev {
@@ -378,7 +377,7 @@ body::after {
 }
 
 .dot.active {
-    background-color: var(--accent-red);
+    background-color: var(--accent-red); /* New accent color */
     transform: scale(1.2);
 }
 
@@ -386,8 +385,6 @@ body::after {
 .section {
     padding: 100px 0;
     position: relative;
-    /* opacity: 0; */
-    /* transform: translateY(50px); */
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
@@ -406,41 +403,71 @@ body::after {
     letter-spacing: 1px;
 }
 
-/* Event Tab Styles */
+/* --- EVENT TAB STYLES - UPDATED --- */
 .event-tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
-    gap: 15px;
+    margin-bottom: 50px; /* Increased margin below tabs */
+    gap: 10px; /* Slightly reduced gap for a tighter look */
     flex-wrap: wrap;
+    border-bottom: 2px solid var(--primary-color); /* Added a base underline */
+    padding-bottom: 5px; /* Space between tabs and underline */
 }
 
 .tab-button {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    padding: 12px 25px;
+    font-size: 1.7rem; /* Slightly larger font */
+    letter-spacing: 1.5px; /* More spacing */
+    padding: 14px 30px; /* Increased padding */
     cursor: pointer;
     background: transparent;
     color: var(--text-color);
-    border: 2px solid var(--primary-color);
-    border-bottom: 2px solid rgba(185, 28, 28, 0.3);
-    border-radius: 4px 4px 0 0;
+    border: none; /* Removed default border */
+    border-bottom: 3px solid transparent; /* Placeholder for active/hover border */
+    border-radius: 0; /* Removed rounding */
     transition: all 0.3s ease;
+    margin-bottom: -5px; /* Align with the container's bottom border */
+    position: relative; /* For pseudo-elements if needed */
 }
 
 .tab-button:hover {
-    background-color: var(--primary-color);
-    color: var(--heading-color);
+    background-color: transparent; /* Keep background transparent on hover */
+    color: var(--heading-color); /* Make text brighter on hover */
+    border-bottom-color: var(--accent-orange); /* Add colored underline on hover */
 }
 
 .tab-button.active {
-    background-color: var(--primary-color);
-    color: var(--heading-color);
-    border-color: rgba(185, 28, 28, 0.5);
-    border-bottom: 2px solid var(--accent-red);
-    box-shadow: 0 -5px 15px rgba(185, 28, 28, 0.1);
+    background-color: transparent; /* Keep background transparent */
+    color: var(--heading-color); /* Bright text for active */
+    border-bottom-color: var(--accent-red); /* Stronger accent color for active underline */
+    font-weight: bold; /* Make active tab text bolder */
+    box-shadow: none; /* Removed previous shadow */
 }
+
+/* Optional: Add a subtle top border effect on active tab */
+.tab-button.active::before {
+    content: '';
+    position: absolute;
+    top: -2px; /* Position above the tab */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-red);
+    border-radius: 3px 3px 0 0;
+    animation: slideInTop 0.3s ease-out;
+}
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+/* --- END OF EVENT TAB UPDATES --- */
 
 .tab-content {
     display: none;
@@ -465,18 +492,11 @@ body::after {
 
 .tab-content .department-section:first-child {
     margin-top: 0;
-    /* Remove extra margin */
-}
-
-.tab-content>p {
-    /* Target only the p in spot events */
-    text-align: center;
-    font-size: 1.2rem;
-    margin-top: 30px;
 }
 
 /* Event Department Styling */
 .department-section {
+    margin-top: 30px; /* Added margin above department title after tabs */
     margin-bottom: 50px;
 }
 
@@ -497,7 +517,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: var(--accent-red);
+    background: var(--accent-red); /* New accent color */
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.6s ease-out;
@@ -512,31 +532,32 @@ body::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
+    justify-items: center; /* Center items within their grid cell */
 }
 
 .event-card {
     background-color: var(--primary-color);
     border-radius: 4px;
-    border: 1px solid rgba(185, 28, 28, 0.2);
+    border: 1px solid rgba(60, 110, 113, 0.2); /* New accent border */
     transition: all 0.3s ease;
     overflow: hidden;
-    /* To contain the image */
     display: flex;
     flex-direction: column;
+    max-width: 400px; /* Prevent cards from becoming too wide */
+    margin-left: auto; /* Center card if max-width applies */
+    margin-right: auto; /* Center card if max-width applies */
+    width: 100%; /* Ensure card takes available space up to max-width */
 }
 
 .event-card:hover {
-    border-color: var(--accent-red);
+    border-color: var(--accent-red); /* New accent color */
     transform: scale(1.02);
-    box-shadow: 0 5px 25px rgba(185, 28, 28, 0.3);
+    box-shadow: 0 5px 25px rgba(60, 110, 113, 0.3); /* New accent shadow */
 }
 
 .event-card .event-image {
     width: 100%;
-    height: 200px;
-    /* Gives all images a uniform height */
-    object-fit: cover;
-    /* Ensures images fill the space well */
+    display: block; /* ADDED for good practice */
 }
 
 .event-card-content {
@@ -544,7 +565,6 @@ body::after {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /* Makes all cards the same height */
 }
 
 .event-card-content h3 {
@@ -557,7 +577,6 @@ body::after {
 
 .event-card-content p {
     flex-grow: 1;
-    /* Pushes buttons to the bottom */
     margin-bottom: 20px;
     line-height: 1.7;
 }
@@ -573,12 +592,13 @@ body::after {
     gap: 15px;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: auto; /* Push buttons to bottom if content is short */
 }
 
 .guidelines-button {
     background: transparent;
-    border: 1px solid var(--accent-orange);
-    color: var(--accent-orange);
+    border: 1px solid var(--accent-orange); /* Lighter blue border */
+    color: var(--accent-orange); /* Lighter blue text */
     padding: 10px 25px;
     border-radius: 4px;
     font-weight: 700;
@@ -588,12 +608,12 @@ body::after {
 }
 
 .guidelines-button:hover {
-    background: var(--accent-orange);
-    color: var(--heading-color);
+    background: var(--accent-orange); /* Lighter blue background */
+    color: var(--bg-color); /* Dark text on hover */
 }
 
 .register-button {
-    background: var(--accent-red);
+    background: var(--accent-red); /* New accent color */
     color: var(--heading-color);
     text-decoration: none;
     padding: 10px 25px;
@@ -605,59 +625,50 @@ body::after {
 
 .register-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px var(--accent-red);
+    background: var(--accent-orange); /* Lighter blue hover */
+    color: var(--bg-color); /* Darker text */
+    box-shadow: 0 0 20px var(--accent-orange); /* Lighter blue shadow */
 }
 
-/* --- NEW GUIDELINES SECTION STYLES --- */
+/* --- UPDATED GUIDELINES SECTION STYLES --- */
 #guidelines {
-    background-color: #111;
-    /* Darker, more solid background */
-    border-top: 1px solid var(--accent-red);
-    border-bottom: 1px solid var(--accent-red);
-    box-shadow: 0 0 40px rgba(185, 28, 28, 0.1);
-    /* Subtle glow */
+    background-color: #050a1f; /* Slightly darker than primary */
+    border-top: 1px solid var(--accent-red); /* New accent color */
+    border-bottom: 1px solid var(--accent-red); /* New accent color */
+    box-shadow: 0 0 40px rgba(60, 110, 113, 0.1); /* New accent shadow */
 }
 
 .guidelines-list {
     list-style-type: none;
-    /* Remove default numbers */
     counter-reset: guidelines-counter;
-    /* Start a counter */
     padding-left: 0;
-    /* Remove old indent */
 }
 
 .guidelines-list li {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 20px;
-    /* Increase spacing */
     color: var(--text-color);
     position: relative;
     padding-left: 55px;
-    /* Make space for the new counter */
     transition: all 0.2s ease-out;
 }
 
 .guidelines-list li:hover {
     color: var(--heading-color);
-    /* Brighten text on hover */
 }
 
 .guidelines-list li::before {
     counter-increment: guidelines-counter;
-    /* Increment counter */
     content: counter(guidelines-counter);
-    /* Display counter */
     position: absolute;
     left: 0;
     top: 2px;
-    /* Align with text */
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    color: var(--accent-red);
+    color: var(--accent-red); /* New accent color */
     background-color: var(--primary-color);
-    border: 1px solid rgba(185, 28, 28, 0.3);
+    border: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
     width: 35px;
     height: 35px;
     line-height: 35px;
@@ -669,24 +680,22 @@ body::after {
 .guidelines-list li:hover::before {
     transform: scale(1.1);
     color: var(--heading-color);
-    border-color: var(--accent-red);
-    box-shadow: 0 0 15px rgba(185, 28, 28, 0.5);
+    border-color: var(--accent-red); /* New accent color */
+    box-shadow: 0 0 15px rgba(60, 110, 113, 0.5); /* New accent shadow */
 }
 
 .guidelines-list li a {
-    color: var(--accent-orange);
+    color: var(--accent-orange); /* Lighter blue links */
     text-decoration: none;
     transition: color 0.3s;
     font-weight: 600;
-    /* Make links stand out */
 }
 
 .guidelines-list li a:hover {
-    color: var(--accent-red);
+    color: var(--accent-red); /* Main accent hover */
     text-decoration: underline;
 }
-
-/* --- END NEW GUIDELINES SECTION STYLES --- */
+/* --- END UPDATED GUIDELINES SECTION STYLES --- */
 
 
 /* Gallery Section */
@@ -694,23 +703,19 @@ body::after {
     padding-bottom: 100px;
 }
 
-/* --- REPLACED GALLERY STYLES --- */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* 2-column grid */
     gap: 1rem;
 }
 
 .gallery-item-full {
     grid-column: 1 / -1;
-    /* Make this item span both columns */
 }
 
 .gallery-item.video-container {
     position: relative;
     padding-top: 56.25%;
-    /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
     width: 100%;
@@ -728,7 +733,6 @@ body::after {
 .gallery-item.cell-video {
     position: relative;
     padding-top: 56.25%;
-    /* 16:9 Aspect Ratio */
     height: 0;
     overflow: hidden;
     width: 100%;
@@ -746,26 +750,22 @@ body::after {
 .gallery-item img {
     width: 100%;
     height: 100%;
-    /* Make images fill the cell */
     object-fit: cover;
-    /* Prevents images from stretching */
     display: block;
 }
-
-/* --- END REPLACED GALLERY STYLES --- */
 
 .gallery-item {
     position: relative;
     border-radius: 4px;
     overflow: hidden;
     background-color: var(--primary-color);
-    box-shadow: inset 0 0 0 0px var(--accent-red);
+    box-shadow: inset 0 0 0 0px var(--accent-red); /* New accent color */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
     transform: scale(1.03);
-    box-shadow: inset 0 0 0 4px var(--accent-red);
+    box-shadow: inset 0 0 0 4px var(--accent-red); /* New accent color */
 }
 
 
@@ -810,7 +810,7 @@ body::after {
 }
 
 .social-links a:hover {
-    color: var(--accent-red);
+    color: var(--accent-red); /* New accent color */
 }
 
 .footer p {
@@ -828,7 +828,7 @@ body::after {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(10, 10, 10, 0.8);
+    background-color: rgba(3, 8, 26, 0.85); /* Darker overlay */
     backdrop-filter: blur(5px);
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -843,7 +843,7 @@ body::after {
     background-color: var(--primary-color);
     margin: 10% auto;
     padding: 40px;
-    border: 1px solid rgba(185, 28, 28, 0.5);
+    border: 1px solid rgba(60, 110, 113, 0.5); /* New accent border */
     width: 90%;
     max-width: 600px;
     border-radius: 8px;
@@ -889,7 +889,7 @@ body::after {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: var(--accent-red);
+    background-color: var(--accent-red); /* New accent color */
     color: white;
     cursor: pointer;
     padding: 15px;
@@ -897,12 +897,12 @@ body::after {
     width: 50px;
     height: 50px;
     font-size: 18px;
-    box-shadow: 0 0 20px var(--accent-red);
+    box-shadow: 0 0 20px var(--accent-red); /* New accent shadow */
     transition: all 0.3s ease;
 }
 
 #scrollToTopBtn:hover {
-    background-color: var(--accent-orange);
+    background-color: var(--accent-orange); /* Lighter blue hover */
 }
 
 /* Hamburger & Mobile */
@@ -918,7 +918,7 @@ body::after {
         height: 100vh;
         flex-direction: column;
         justify-content: center;
-        background-color: rgba(10, 10, 10, 0.95);
+        background-color: rgba(3, 8, 26, 0.97); /* Very dark mobile nav */
         backdrop-filter: blur(10px);
         width: 70%;
         text-align: center;
@@ -984,11 +984,19 @@ body::after {
 
     .event-tabs {
         gap: 10px;
+        margin-bottom: 40px; /* Adjust margin for mobile */
+        padding-bottom: 3px; /* Adjust padding for mobile */
     }
 
     .tab-button {
-        font-size: 1.1rem;
-        padding: 10px 15px;
+        font-size: 1.3rem; /* Adjust font size for mobile */
+        padding: 10px 15px; /* Adjust padding for mobile */
+        margin-bottom: -3px; /* Adjust alignment for mobile */
+    }
+
+     /* Remove top line effect on mobile if it looks cluttered */
+    .tab-button.active::before {
+       display: none;
     }
 
     .gallery-grid {
@@ -1000,5 +1008,9 @@ body::after {
     .gallery-item:nth-child(n) {
         grid-column: auto;
         grid-row: auto;
+    }
+
+    .event-card {
+        max-width: none; /* Allow cards to fill width on mobile */
     }
 }
