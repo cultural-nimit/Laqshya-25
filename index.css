@@ -245,6 +245,7 @@ body::after {
 
 /* Banner Carousel Section */
 .banner-carousel-section {
+    margin-top:30px
     padding: 130px 0 50px 0;
     background-color: rgba(11, 19, 43, 0.6); /* Slightly lighter dark blue */
     border-top: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
