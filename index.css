@@ -125,12 +125,12 @@ body::after {
 
 /* Hero Section */
 .hero {
-    min-height: auto;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 80px 20px 60px 20px;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
 }
@@ -203,7 +203,6 @@ body::after {
     line-height: 1.7;
     animation: fadeInUp 0.8s ease-out 0.4s;
     animation-fill-mode: backwards;
-    margin-bottom:30px;
 }
 
 .cta-button {
@@ -246,8 +245,7 @@ body::after {
 
 /* Banner Carousel Section */
 .banner-carousel-section {
-    margin-top:30px
-    padding: 100px 0 50px 0;
+    padding: 130px 0 50px 0;
     background-color: rgba(11, 19, 43, 0.6); /* Slightly lighter dark blue */
     border-top: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
     border-bottom: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
@@ -360,7 +358,7 @@ body::after {
 
 .carousel-dots {
     position: absolute;
-    bottom: 5px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
