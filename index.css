@@ -358,7 +358,7 @@ body::after {
 
 .carousel-dots {
     position: absolute;
-    bottom: 15px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
