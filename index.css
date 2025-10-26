@@ -196,14 +196,45 @@ body::after {
     animation-fill-mode: backwards;
 }
 
-.hero p {
-    font-size: 1.1rem;
-    margin: 0 auto 40px auto;
-    max-width: 550px;
-    line-height: 1.7;
-    animation: fadeInUp 0.8s ease-out 0.4s;
+/* ===== START: COUNTDOWN TIMER STYLES ===== */
+#countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto 40px; /* Add space around the timer */
+    animation: fadeInUp 0.8s ease-out 0.3s; /* Slightly delayed animation */
     animation-fill-mode: backwards;
 }
+
+.countdown-block {
+    background: rgba(11, 19, 43, 0.6); /* Consistent bg */
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: 1px solid rgba(60, 110, 113, 0.3); /* Accent border */
+    backdrop-filter: blur(5px);
+    text-align: center;
+    min-width: 80px; /* Ensure blocks have some width */
+}
+
+.countdown-block span {
+    display: block;
+}
+
+.countdown-block span:first-child { /* The number */
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--heading-color);
+    line-height: 1;
+}
+
+.countdown-block .label { /* The label (Days, Hours, etc.) */
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+/* ===== END: COUNTDOWN TIMER STYLES ===== */
+
 
 /* ===== START: UPDATED INFO LAYOUT STYLES ===== */
 .info-layout-section {
@@ -219,7 +250,7 @@ body::after {
     flex-wrap: wrap; /* Mobile-first: stacks them */
     align-items: stretch; /* Makes children same height */
     margin-bottom: 40px;
-    
+
     /* These styles are for the SINGLE container */
     background: rgba(11, 19, 43, 0.6);
     border: 1px solid rgba(60, 110, 113, 0.3);
@@ -333,7 +364,7 @@ body::after {
     background-color: rgba(11, 19, 43, 0.6); /* Slightly lighter dark blue */
     border-top: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
     border-bottom: 1px solid rgba(60, 110, 113, 0.3); /* New accent border */
-    position: relative;   /* <-- ADD THIS */
+    position: relative;
     overflow: hidden;
 }
 
@@ -367,7 +398,7 @@ body::after {
 .slide img {
     width: 100%;
     display: block;
-    object-fit: fill; /* Consider 'cover' if images get distorted */
+    object-fit: cover; /* Changed to cover for better aspect ratio handling */
     height: 600px;
     border-radius: 8px;
 }
@@ -471,10 +502,10 @@ body::after {
 .section {
     padding: 100px 0;
     position: relative;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Removed transition properties for scroll reveal */
 }
 
-.section.visible {
+.section.visible { /* Keep this for potential future use or consistency */
     opacity: 1;
     transform: translateY(0);
 }
@@ -609,6 +640,7 @@ body::after {
     transition: transform 0.6s ease-out;
 }
 
+/* Scroll reveal for the underline (if IntersectionObserver is used) */
 .section.visible .department-title::after {
     transform: scaleX(1);
 }
@@ -643,7 +675,10 @@ body::after {
 
 .event-card .event-image {
     width: 100%;
-    display: block; /* ADDED for good practice */
+    display: block;
+    /* aspect-ratio: 16 / 9; */ /* <<< REMOVED THIS LINE */
+    height: auto; /* <<< ADDED THIS LINE */
+    object-fit: cover;
 }
 
 .event-card-content {
@@ -882,10 +917,70 @@ body::after {
     transform: scale(1.1) translateY(-5px);
 }
 
-/* Footer */
-.footer {
+/* ===== START: NEW CONTACT & VENUE STYLES ===== */
+.contact-venue-section {
+    background-color: var(--primary-color); /* Use primary as base */
+    border-top: 1px solid rgba(60, 110, 113, 0.3);
+}
+
+.contact-venue-layout {
+    display: flex;
+    flex-wrap: wrap; /* Stack on mobile */
+    gap: 40px;
+    align-items: flex-start; /* Align items to top */
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.college-logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.1); /* Placeholder bg if logo is transparent */
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.contact-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.map-container {
+    flex: 1;
+    min-width: 300px;
+    min-height: 350px; /* Give map some initial height */
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(60, 110, 113, 0.3);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 350px; /* Ensure map maintains height */
+}
+/* ===== END: NEW CONTACT & VENUE STYLES ===== */
+
+
+/* Footer (Renamed) */
+.page-footer {
     padding: 60px 0;
     text-align: center;
+    background-color: var(--bg-color); /* Ensure it has the base bg */
 }
 
 .social-links a {
@@ -899,7 +994,7 @@ body::after {
     color: var(--accent-red); /* New accent color */
 }
 
-.footer p {
+.page-footer p {
     margin-top: 20px;
     font-size: 0.9rem;
 }
@@ -994,6 +1089,16 @@ body::after {
 /* Hamburger & Mobile */
 .hamburger {
     display: none;
+}
+
+@media(max-width: 900px) { /* Changed breakpoint for info layout */
+    .info-text {
+        text-align: center; /* Center text on mobile */
+    }
+    .info-image {
+        /* Remove clip-path on mobile */
+        clip-path: none !important;
+    }
 }
 
 @media(max-width: 768px) {
@@ -1099,6 +1204,27 @@ body::after {
     .event-card {
         max-width: none; /* Allow cards to fill width on mobile */
     }
+
+    /* Countdown mobile styles */
+    .countdown-block {
+        padding: 10px 15px;
+        min-width: 60px;
+    }
+    .countdown-block span:first-child {
+        font-size: 2rem;
+    }
+    .countdown-block .label {
+        font-size: 0.7rem;
+    }
+
+    /* Contact/Venue mobile styles */
+    .contact-info {
+        text-align: center; /* Center contact info on mobile */
+    }
+    .college-logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* --- UPDATED DESKTOP MEDIA QUERY --- */
@@ -1131,3 +1257,4 @@ body::after {
         clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
     }
 }
+
