@@ -205,6 +205,90 @@ body::after {
     animation-fill-mode: backwards;
 }
 
+/* ===== START: UPDATED INFO LAYOUT STYLES ===== */
+.info-layout-section {
+    width: 100%;
+    max-width: 1100px; /* Wider for the two-column layout */
+    margin: 40px auto;
+    animation: fadeInUp 0.8s ease-out 0.4s;
+    animation-fill-mode: backwards;
+}
+
+.info-row {
+    display: flex;
+    flex-wrap: wrap; /* Mobile-first: stacks them */
+    align-items: stretch; /* Makes children same height */
+    margin-bottom: 40px;
+    
+    /* These styles are for the SINGLE container */
+    background: rgba(11, 19, 43, 0.6);
+    border: 1px solid rgba(60, 110, 113, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    overflow: hidden; /* This is critical! */
+    transition: all 0.3s ease;
+}
+
+.info-row:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-red);
+    box-shadow: 0 5px 25px rgba(60, 110, 113, 0.3);
+}
+
+.info-text {
+    flex-grow: 1; /* Allows it to grow */
+    flex-basis: 400px; /* Base width before growing/shrinking */
+    padding: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Removed all background, border, etc. */
+}
+
+.info-text h3 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--heading-color);
+    margin-bottom: 15px;
+}
+
+.info-text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin: 0;
+    max-width: none;
+}
+
+.info-image-wrapper {
+    flex-grow: 1;
+    flex-basis: 400px;
+    min-width: 0; /* Prevents flex overflow */
+}
+
+.info-image {
+    width: 100%;
+    height: 100%; /* Fills the stretched parent */
+    overflow: hidden;
+    /* Removed border and radius */
+}
+
+.info-image img {
+    width: 100%;
+    height: 100%; /* Fills the container */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.info-image:hover img {
+    transform: scale(1.1);
+}
+
+/* Slanted shapes are now handled in the media query */
+/* ===== END: UPDATED INFO LAYOUT STYLES ===== */
+
+
 .cta-button {
     display: inline-block;
     padding: 14px 32px;
@@ -1014,5 +1098,36 @@ body::after {
 
     .event-card {
         max-width: none; /* Allow cards to fill width on mobile */
+    }
+}
+
+/* --- UPDATED DESKTOP MEDIA QUERY --- */
+@media (min-width: 900px) {
+    .info-row {
+        flex-wrap: nowrap; /* Go side-by-side on desktop */
+    }
+
+    /* Row 1: Text | Image (default order) */
+    /* No rule needed, this is the default */
+
+    /* Row 2: Image | Text (reversed order) */
+    #about-nimit-row {
+        flex-direction: row-reverse;
+    }
+
+    /* Align text to the right for the NIMIT block */
+    #about-nimit-row .info-text {
+        text-align: right;
+    }
+
+    /* --- Add the clip-path *only* on desktop --- */
+    #laqshya-image {
+        /* Slants the left edge: / */
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    #nimit-image {
+        /* Slants the right edge: \ */
+        clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
     }
 }
