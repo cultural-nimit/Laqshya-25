@@ -39,42 +39,42 @@
             <div class="banner-carousel">
                 <div class="slides">
                     <div class="slide active">
-                        <img src="banner/lq.jpg" alt="LAQSHYA'25">
+                        <img src="/banner/lq.jpg" alt="LAQSHYA'25">
                         <div class="slide-content">
                             <h2>LAQSHYA'25</h2>
                             <a href="#events" class="slide-cta">View Events</a>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="banner/e1.jpg" alt="EVENTS">
+                        <img src="/banner/e1.jpg" alt="EVENTS">
                         <div class="slide-content">
                             <h2>EVENTS</h2>
                             <a href="#events" class="slide-cta">Register Now</a>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="banner/e2.jpg" alt="EVENTS">
+                        <img src="/banner/e2.jpg" alt="EVENTS">
                         <div class="slide-content">
                             <h2>EVENTS</h2>
                             <a href="#events" class="slide-cta">Register Now</a>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="banner/e3.jpg" alt="EVENTS">
+                        <img src="/banner/e3.jpg" alt="EVENTS">
                         <div class="slide-content">
                             <h2>EVENTS</h2>
                             <a href="#events" class="slide-cta">Register Now</a>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="banner/e4.jpg" alt="EVENTS">
+                        <img src="/banner/e4.jpg" alt="EVENTS">
                         <div class="slide-content">
                             <h2>EVENTS</h2>
                             <a href="#events" class="slide-cta">Register Now</a>
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="banner/AI OD.jpg" alt="AI ODYSSEY">
+                        <img src="/banner/AI OD.jpg" alt="AI ODYSSEY">
                         <div class="slide-content">
                             <h2>AI ODYSSEY</h2>
                             <p>A 24-hour marathon to build innovative solutions.</p>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="banner/Tr Hu.png" alt="PC DOC">
+                        <img src="/banner/Tr Hu.png" alt="PC DOC">
                         <div class="slide-content">
                             <h2>Treasure Hunt</h2>
                             <p>Ready for a Mysterious Adventure?</p>
@@ -105,8 +105,29 @@
             <div class="hero-content">
                 <img src="logo.png" alt="LAQSHYA '25" class="hero-logo-img">
 
-                <div class="info-layout-section">
+                <!-- ===== START: COUNTDOWN TIMER ===== -->
+                <div id="countdown-timer">
+                    <div class="countdown-block">
+                        <span id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="countdown-block">
+                        <span id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="countdown-block">
+                        <span id="minutes">00</span>
+                        <span class="label">Minutes</span>
+                    </div>
+                    <div class="countdown-block">
+                        <span id="seconds">00</span>
+                        <span class="label">Seconds</span>
+                    </div>
+                </div>
+                <!-- ===== END: COUNTDOWN TIMER ===== -->
 
+
+                <div class="info-layout-section">
                     <div class="info-row" id="about-laqshya-row">
                         <div class="info-text">
                             <h3>About Laqshya '25</h3>
@@ -117,6 +138,7 @@
                         </div>
                         <div class="info-image-wrapper">
                             <div class="info-image" id="laqshya-image">
+                                <!-- !!! Replace src with your image !!! -->
                                 <img src="gallery/gallery1.jpg"
                                     alt="About Laqshya '25">
                             </div>
@@ -134,6 +156,7 @@
                         </div>
                         <div class="info-image-wrapper">
                             <div class="info-image" id="nimit-image">
+                                <!-- !!! Replace src with your image !!! -->
                                 <img src="nimit.webp"
                                     alt="About NIMIT">
                             </div>
@@ -782,7 +805,41 @@
             </div>
         </section>
 
-        <footer class="footer" id="contact">
+        <!-- ===== START: NEW CONTACT & VENUE SECTION ===== -->
+        <section class="section contact-venue-section" id="contact">
+            <div class="container">
+                <h2 class="section-title">VENUE & CONTACT</h2>
+                <div class="contact-venue-layout">
+                    <div class="contact-info">
+                         <!-- Placeholder for College Logo - Replace src -->
+                         <img src="Naipunnya-Logo.webp" alt="NIMIT Logo" class="college-logo">
+                         <h3>Naipunnya Institute of Management and Information Technology</h3>
+                         <p>Pongam, Koratty East P O, Thrissur Dt.,<br>
+                            Kerala, India - 680308</p>
+                         <p>
+                            <!-- You can add contact numbers or email here if needed -->
+                            <!-- Example: Phone: +91 XXX XXX XXXX -->
+                         </p>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.1839627257496!2d76.37061637404435!3d10.246742389871608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080151672f365b%3A0x6c963f2aa71cd32c!2sNaipunnya%20Institute%20of%20Management%20and%20Information%20Technology!5e0!3m2!1sen!2sin!4v1761479523569!5m2!1sen!2sin"
+                            width="600"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ===== END: NEW CONTACT & VENUE SECTION ===== -->
+
+
+        <!-- Renamed the old footer -->
+        <footer class="page-footer">
             <div class="container">
                 <div class="social-links">
                     <a href="https://www.instagram.com/laqshya_2025?igsh=MWZvOWhseTc4a2hrMA=="
@@ -805,9 +862,8 @@
 
     <button id="scrollToTopBtn" title="Go to top">&uarr;</button>
 
-    <script src="script.js">
-    </script>
+    <script src="script.js"> </script>
+
 </body>
 
 </html>
-
