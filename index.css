@@ -973,6 +973,77 @@ body::after {
     height: 100%;
     min-height: 350px; /* Ensure map maintains height */
 }
+
+/* --- START: NEW COORDINATOR STYLES --- */
+.coordinator-heading {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 40px; /* Add space above the heading */
+}
+
+.coordinator-heading:first-of-type {
+    margin-top: 0; /* No top margin for the very first one */
+}
+
+.coordinator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-bottom: 50px; /* Space between grids and below the last grid */
+    justify-items: center;
+}
+
+.coordinator-card {
+    background-color: var(--bg-color); /* Darker than section bg */
+    border: 1px solid rgba(60, 110, 113, 0.3); /* Accent border */
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px; /* Limit card width */
+}
+
+.coordinator-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-red);
+    box-shadow: 0 5px 25px rgba(60, 110, 113, 0.3);
+}
+
+.coordinator-image {
+    width: 130px; 
+    height: 130px;
+    border-radius: 50%; /* Circular image */
+    overflow: hidden;
+    margin: 0 auto 20px auto; /* Center it */
+    background-color: var(--primary-color); /* BG for placeholder */
+    border: 3px solid var(--accent-red); /* Accent border */
+}
+
+.coordinator-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.coordinator-details h4 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--heading-color);
+    margin-bottom: 8px;
+}
+
+.coordinator-details p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+/* --- END: NEW COORDINATOR STYLES --- */
+
+
 /* ===== END: NEW CONTACT & VENUE STYLES ===== */
 
 
@@ -1225,6 +1296,15 @@ body::after {
         margin-left: auto;
         margin-right: auto;
     }
+
+    /* Coordinator mobile styles */
+    .coordinator-grid {
+         grid-template-columns: 1fr; /* Stack on small mobile */
+         gap: 20px;
+    }
+     .coordinator-card {
+        max-width: none; /* Full width */
+    }
 }
 
 /* --- UPDATED DESKTOP MEDIA QUERY --- */
@@ -1257,4 +1337,3 @@ body::after {
         clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
     }
 }
-
