@@ -891,31 +891,127 @@ body::after {
 
 
 /* Sponsors Section */
+/* ===== START: NEW SPONSORS SECTION ===== */
 #sponsors {
-    background-color: var(--primary-color);
+    /* Use the darkest background for high contrast */
+    background-color: var(--bg-color); 
+    border-top: 1px solid var(--accent-red);
+    border-bottom: 1px solid var(--accent-red);
+    padding: 100px 0;
 }
 
-.sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 30px;
-    align-items: center;
+.sponsor-tier {
+    /* Add space between each tier */
+    margin-bottom: 50px;
 }
 
-.sponsor-logo {
+.tier-heading {
+    /* Style for the tier titles (e.g., "GOLD SPONSORS") */
+    font-family: var(--font-heading);
+    font-size: 1.8rem; /* Use 'rem' for accessibility */
+    color: var(--accent-red); /* Use the main accent color */
     text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
 }
 
-.sponsor-logo img {
-    max-width: 120px;
-    filter: grayscale(100%) opacity(0.7);
+.tier-heading::after {
+    /* A subtle underline for the tier heading */
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background-color: var(--accent-orange); /* Use the lighter accent */
+    margin: 10px auto 0;
+}
+
+.logo-grid {
+    /* This is the flex container for the logos */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.sponsor-plaque {
+    /* This is the base "plaque" for each logo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    border: 1px solid rgba(60, 110, 113, 0.3); /* Faint accent border */
+    border-radius: 8px;
+    padding: 20px;
     transition: all 0.3s ease;
+    text-decoration: none;
+    overflow: hidden; /* Ensures image zoom doesn't break border */
 }
 
-.sponsor-logo:hover img {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.1) translateY(-5px);
+.sponsor-plaque img {
+    /* Base style for all sponsor images */
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%) opacity(0.7);
+    transition: all 0.4s ease; /* Slower, smoother transition */
 }
+
+/* --- TIER-SPECIFIC STYLES --- */
+
+/* --- TITLE TIER (Biggest) --- */
+.logo-grid.tier-title .sponsor-plaque {
+    flex-basis: 400px; /* Make title sponsors large */
+    max-width: 500px;
+    padding: 30px;
+    /* Special "lit up" border for the title sponsor */
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 30px rgba(91, 192, 222, 0.4);
+}
+.logo-grid.tier-title .sponsor-plaque img {
+    /* Title sponsor is always full color */
+    filter: grayscale(0%) opacity(1);
+}
+
+/* --- GOLD TIER (Medium) --- */
+.logo-grid.tier-gold .sponsor-plaque {
+    flex-basis: 250px; /* Medium size */
+    min-height: 120px;
+}
+
+/* --- PARTNER TIER (Smallest) --- */
+.logo-grid.tier-partners .sponsor-plaque {
+    flex-basis: 180px; /* Smallest size */
+    min-height: 100px;
+    background-color: transparent; /* Make partners more subtle */
+    border: 1px dashed rgba(60, 110, 113, 0.3);
+}
+
+/* --- HOVER EFFECTS --- */
+
+/* All plaques (except title) light up on hover */
+.sponsor-plaque:hover {
+    transform: scale(1.05);
+    border-color: var(--accent-red);
+    box-shadow: 0 5px 25px rgba(60, 110, 113, 0.3);
+    background-color: #070e24; /* Slightly lighter than primary */
+}
+
+.sponsor-plaque:hover img {
+    /* All logos (except title) get color and zoom slightly on hover */
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1); /* Adds a nice zoom effect */
+}
+
+/* Specific hover for the main title sponsor */
+.logo-grid.tier-title .sponsor-plaque:hover {
+    box-shadow: 0 0 45px rgba(91, 192, 222, 0.7); /* Brighter glow */
+}
+.logo-grid.tier-title .sponsor-plaque:hover img {
+    transform: scale(1.05); /* Less zoom for the big one */
+}
+/* ===== END: NEW SPONSORS SECTION ===== */
 
 /* ===== START: NEW CONTACT & VENUE STYLES ===== */
 .contact-venue-section {
