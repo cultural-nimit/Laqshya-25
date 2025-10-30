@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearInterval(slideInterval);
         slideInterval = setInterval(() => {
             goToSlide(currentSlide + 1);
-        }, 8000); // Change slide every 8 seconds
+        }, 3000); // Change slide every 3 seconds
     }
 
     function resetInterval() {
