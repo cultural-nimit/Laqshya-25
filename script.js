@@ -74,82 +74,124 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Banner Carousel Logic
-    const slides = document.querySelectorAll('.slide');
-    const nextBtn = document.querySelector('.next');
-    const prevBtn = document.querySelector('.prev');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    let currentSlide = 0;
+    // =========================================================
+    // --- START: UPDATED Banner Carousel Logic (Sliding) ---
+    // =========================================================
+    const slidesContainer = document.querySelector('.banner-carousel .slides');
+    const slides = document.querySelectorAll('.banner-carousel .slide');
+    const prevButton = document.querySelector('.banner-carousel .prev');
+    const nextButton = document.querySelector('.banner-carousel .next');
+    const dotsContainer = document.querySelector('.banner-carousel .carousel-dots');
+    
+    let currentIndex = 0;
     let slideInterval;
 
-    function createDots() {
-        if (!dotsContainer) return;
-        dotsContainer.innerHTML = ''; // Clear existing dots first
+    if (slides.length > 0) {
+        // --- 1. Create Dots ---
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.classList.add('dot');
-            if (i === currentSlide) dot.classList.add('active'); // Use currentSlide
+            if (i === currentIndex) {
+                dot.classList.add('active');
+            }
             dot.addEventListener('click', () => {
                 goToSlide(i);
+                resetInterval(); // Reset auto-play timer on manual click
             });
             dotsContainer.appendChild(dot);
         });
-    }
+        
+        const dots = document.querySelectorAll('.banner-carousel .dot');
 
-    function updateDots(index) {
-        const dots = document.querySelectorAll('.dot');
-        if (dots.length === 0) return;
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (dots[index]) { // Check if dot exists
-            dots[index].classList.add('active');
+        // --- 2. Core Function: goToSlide ---
+        function goToSlide(index) {
+            const carousel = document.querySelector('.banner-carousel');
+            if (!carousel || !slidesContainer) return; // Safety check
+
+            // Clamp index to be within bounds (looping)
+            if (index < 0) {
+                index = slides.length - 1;
+            } else if (index >= slides.length) {
+                index = 0;
+            }
+            
+            currentIndex = index;
+            const activeSlide = slides[currentIndex];
+            if (!activeSlide) return; // Safety check
+            
+            // Calculate the offset to center the active slide
+            const carouselWidth = carousel.offsetWidth;
+            const slideOffsetLeft = activeSlide.offsetLeft;
+            const slideWidth = activeSlide.offsetWidth;
+            
+            // Offset = center of carousel - center of slide
+            const offset = (carouselWidth / 2) - (slideOffsetLeft + (slideWidth / 2));
+
+            slidesContainer.style.transform = `translateX(${offset}px)`;
+
+            // Update active classes for slides (for scale/opacity)
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+
+            // Update active classes for dots
+            if (dots.length > 0) {
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
         }
-    }
 
-    function goToSlide(slideIndex) {
-        if (!slides.length || slides.length === 0) return; // Added check for empty slides
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (slideIndex + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-        updateDots(currentSlide);
-        resetInterval();
-    }
+        // --- 3. Event Listeners for Buttons ---
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+                resetInterval();
+            });
+        }
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+                resetInterval();
+            });
+        }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            goToSlide(currentSlide + 1);
+        // --- 4. Auto-play Functionality ---
+        function startInterval() {
+            clearInterval(slideInterval); // Clear just in case
+            slideInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000); // 5 seconds
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        // --- 5. Initial Load & Resize Handling ---
+        // Use window.onload to ensure all images are loaded and widths are correct
+        window.addEventListener('load', () => {
+            goToSlide(currentIndex); // Set initial position
+            startInterval(); // Start auto-play
         });
-    }
-
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            goToSlide(currentSlide - 1);
+        
+        // Recalculate on window resize
+        window.addEventListener('resize', () => {
+            goToSlide(currentIndex);
         });
-    }
 
-    function startInterval() {
-        // Clear existing interval before starting a new one
-        clearInterval(slideInterval);
-        slideInterval = setInterval(() => {
-            goToSlide(currentSlide + 1);
-        }, 3000); // Change slide every 3 seconds
-    }
-
-    function resetInterval() {
-        clearInterval(slideInterval);
-        startInterval();
-    }
-
-    if (slides.length > 0) {
-        createDots(); // Create dots initially
-        // goToSlide(0); // This is handled by the 'active' class in HTML
-        startInterval();
-
+        // Pause on hover
         const carousel = document.querySelector('.banner-carousel');
-        if (carousel) { // Check if carousel exists
+         if (carousel) {
             carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
             carousel.addEventListener('mouseleave', startInterval);
         }
     }
+    // =========================================================
+    // --- END: UPDATED Banner Carousel Logic ---
+    // =========================================================
+
 
     // Scroll Reveal Animation (Optional - keeping it simple for now)
     // const sections = document.querySelectorAll('.section');
