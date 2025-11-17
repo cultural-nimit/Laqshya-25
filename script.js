@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
             tab.classList.add('active');
             const tabId = tab.dataset.tab;
             const activeTabContent = document.getElementById(tabId);
-            if(activeTabContent) { // Check if content exists
-                 activeTabContent.classList.add('active');
+            if (activeTabContent) { // Check if content exists
+                activeTabContent.classList.add('active');
             }
         });
     });
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevButton = document.querySelector('.banner-carousel .prev');
     const nextButton = document.querySelector('.banner-carousel .next');
     const dotsContainer = document.querySelector('.banner-carousel .carousel-dots');
-    
+
     let currentIndex = 0;
     let slideInterval;
 
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             dotsContainer.appendChild(dot);
         });
-        
+
         const dots = document.querySelectorAll('.banner-carousel .dot');
 
         // --- 2. Core Function: goToSlide ---
@@ -114,16 +114,16 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (index >= slides.length) {
                 index = 0;
             }
-            
+
             currentIndex = index;
             const activeSlide = slides[currentIndex];
             if (!activeSlide) return; // Safety check
-            
+
             // Calculate the offset to center the active slide
             const carouselWidth = carousel.offsetWidth;
             const slideOffsetLeft = activeSlide.offsetLeft;
             const slideWidth = activeSlide.offsetWidth;
-            
+
             // Offset = center of carousel - center of slide
             const offset = (carouselWidth / 2) - (slideOffsetLeft + (slideWidth / 2));
 
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
             goToSlide(currentIndex); // Set initial position
             startInterval(); // Start auto-play
         });
-        
+
         // Recalculate on window resize
         window.addEventListener('resize', () => {
             goToSlide(currentIndex);
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Pause on hover
         const carousel = document.querySelector('.banner-carousel');
-         if (carousel) {
+        if (carousel) {
             carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
             carousel.addEventListener('mouseleave', startInterval);
         }
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Scroll to Top Button
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    if(scrollToTopBtn) { // Check if button exists
+    if (scrollToTopBtn) { // Check if button exists
         window.onscroll = function () { scrollFunction() };
         function scrollFunction() {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -231,11 +231,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const secondsEl = document.getElementById("seconds");
 
         if (!daysEl || !hoursEl || !minutesEl || !secondsEl) {
-             console.error("Countdown elements not found!");
-             return; // Exit if elements are missing
+            console.error("Countdown elements not found!");
+            return; // Exit if elements are missing
         }
 
-        const countdownFunction = setInterval(function() {
+        const countdownFunction = setInterval(function () {
             const now = new Date().getTime();
             const distance = countDownDate - now;
 
@@ -261,4 +261,33 @@ document.addEventListener('DOMContentLoaded', function () {
     startCountdown(); // Start the countdown on page load
     // ===== END: COUNTDOWN TIMER LOGIC =====
 
-});
+    // ... existing code ...
+
+    // ===== START: BROCHURE POPUP LOGIC =====
+    const brochureModal = document.getElementById('brochure-modal');
+    const closeBrochureBtn = document.querySelector('.close-brochure');
+
+    // Check if elements exist to prevent errors
+    if (brochureModal && closeBrochureBtn) {
+
+        // Show the modal automatically when the page loads (with a small delay)
+        setTimeout(() => {
+            brochureModal.classList.add('show-brochure');
+        }, 1000); // 1000ms = 1 second delay
+
+        // Close when clicking the X button
+        closeBrochureBtn.addEventListener('click', () => {
+            brochureModal.classList.remove('show-brochure');
+        });
+
+        // Close when clicking outside the image (on the blurred background)
+        window.addEventListener('click', (e) => {
+            if (e.target === brochureModal) {
+                brochureModal.classList.remove('show-brochure');
+            }
+        });
+    }
+    // ===== END: BROCHURE POPUP LOGIC =====
+
+}); // This is the end of your DOMContentLoaded
+// });
