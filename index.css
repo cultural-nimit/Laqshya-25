@@ -1029,7 +1029,7 @@ body::after {
 
 
 /* Sponsors Section */
-/* ===== START: NEW SPONSORS SECTION ===== */
+/* ===== START: UPDATED SPONSORS SECTION (Including Food Tier) ===== */
 #sponsors {
     /* Use the darkest background for high contrast */
     background-color: var(--bg-color);
@@ -1046,26 +1046,27 @@ body::after {
 .tier-heading {
     /* Style for the tier titles (e.g., "GOLD SPONSORS") */
     font-family: var(--font-heading);
-    font-size: 1.8rem;
-    /* Use 'rem' for accessibility */
-    color: var(--accent-red);
-    /* Use the main accent color */
+    font-size: 2.2rem;
+    /* Increased size */
+    color: var(--accent-orange);
+    /* Use the lighter accent color */
     text-align: center;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 30px;
     position: relative;
 }
 
 .tier-heading::after {
-    /* A subtle underline for the tier heading */
+    /* A bold underline for the tier heading */
     content: '';
     display: block;
-    width: 80px;
-    height: 2px;
-    background-color: var(--accent-orange);
-    /* Use the lighter accent */
-    margin: 10px auto 0;
+    width: 150px;
+    height: 4px;
+    background-color: var(--accent-red);
+    /* Use the main accent */
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 .logo-grid {
@@ -1074,7 +1075,8 @@ body::after {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
+    /* Increased gap */
 }
 
 .sponsor-plaque {
@@ -1083,90 +1085,138 @@ body::after {
     justify-content: center;
     align-items: center;
     background-color: var(--primary-color);
-    border: 1px solid rgba(60, 110, 113, 0.3);
-    /* Faint accent border */
+    border: 1px solid rgba(91, 192, 222, 0.3);
+    /* Faint light accent border */
     border-radius: 8px;
     padding: 20px;
     transition: all 0.3s ease;
     text-decoration: none;
     overflow: hidden;
-    /* Ensures image zoom doesn't break border */
+    min-height: 100px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .sponsor-plaque img {
     /* Base style for all sponsor images */
     width: 100%;
     height: auto;
-    /* filter: grayscale(100%) opacity(0.7); */
-    transition: all 0.4s ease;
-    /* Slower, smoother transition */
+    /* filter: grayscale(80%) opacity(0.8); */
+    transition: all 0.5s ease;
 }
 
 /* --- TIER-SPECIFIC STYLES --- */
 
-/* --- TITLE TIER (Biggest) --- */
-.logo-grid.tier-title .sponsor-plaque {
-    flex-basis: 400px;
-    /* Make title sponsors large */
-    max-width: 500px;
-    padding: 30px;
-    /* Special "lit up" border for the title sponsor */
-    border-color: var(--accent-orange);
-    box-shadow: 0 0 30px rgba(91, 192, 222, 0.4);
+/* 1. Educational Partner (Largest and most prominent) */
+.logo-grid.tier-education .sponsor-plaque {
+    flex-basis: 90%;
+    max-width: 650px;
+    padding: 40px;
+    /* Larger padding */
+    /* Special "lit up" border for the largest sponsor */
+    border: 2px solid var(--accent-red);
+    box-shadow: 0 0 40px rgba(60, 110, 113, 0.6);
 }
 
-.logo-grid.tier-title .sponsor-plaque img {
-    /* Title sponsor is always full color */
+.logo-grid.tier-education .sponsor-plaque img {
+    /* Full color for the main sponsor */
     filter: grayscale(0%) opacity(1);
+    max-width: 80%;
 }
 
-/* --- GOLD TIER (Medium) --- */
-.logo-grid.tier-gold .sponsor-plaque {
-    flex-basis: 250px;
-    /* Medium size */
-    min-height: 120px;
+
+/* 2. Food Partners (Two different sizes, horizontal layout) */
+.logo-grid.tier-food {
+    /* Ensure only two items are on one line on desktop */
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: space-between;
 }
 
-/* --- PARTNER TIER (Smallest) --- */
-.logo-grid.tier-partners .sponsor-plaque {
-    flex-basis: 180px;
-    /* Smallest size */
+.logo-grid.tier-food .tier-food-main {
+    flex-basis: 60%;
+    max-width: 450px;
+    padding: 30px;
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 25px rgba(91, 192, 222, 0.4);
+}
+
+.logo-grid.tier-food .tier-food-co {
+    flex-basis: 30%;
+    max-width: 250px;
+    padding: 20px;
+}
+
+
+/* 3. Fashion Partner (Two different sizes, horizontal layout) */
+.logo-grid.tier-fashion {
+    /* Ensure only two items are on one line on desktop */
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+.logo-grid.tier-fashion .tier-fashion-main {
+    flex-basis: 40%;
+    max-width: 250px;
+    padding: 20px;
+    border-color: var(--accent-orange);
+    /* box-shadow: 0 0 25px rgba(91, 192, 222, 0.4); */
+}
+
+.logo-grid.tier-fashion .tier-fashion-co {
+    flex-basis: 30%;
+    max-width: 250px;
+    padding: 20px;
+}
+
+/* 4. General Partners (Smaller, uniform size) */
+.logo-grid.tier-general .sponsor-plaque {
+    flex-basis: 200px;
     min-height: 100px;
+    padding: 15px;
     background-color: transparent;
-    /* Make partners more subtle */
-    border: 1px dashed rgba(60, 110, 113, 0.3);
+    border: 1px dashed rgba(60, 110, 113, 0.2);
+    box-shadow: none;
 }
 
-/* --- HOVER EFFECTS --- */
+/* --- HOVER EFFECTS (Applied to all) --- */
 
-/* All plaques (except title) light up on hover */
 .sponsor-plaque:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     border-color: var(--accent-red);
-    box-shadow: 0 5px 25px rgba(60, 110, 113, 0.3);
+    box-shadow: 0 5px 25px rgba(60, 110, 113, 0.5);
     background-color: #070e24;
-    /* Slightly lighter than primary */
 }
 
 .sponsor-plaque:hover img {
-    /* All logos (except title) get color and zoom slightly on hover */
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.1);
-    /* Adds a nice zoom effect */
+    transform: scale(1.08);
 }
 
-/* Specific hover for the main title sponsor */
-.logo-grid.tier-title .sponsor-plaque:hover {
-    box-shadow: 0 0 45px rgba(91, 192, 222, 0.7);
-    /* Brighter glow */
+/* Specific hover for the main educational partner */
+.logo-grid.tier-education .sponsor-plaque:hover {
+    box-shadow: 0 0 50px rgba(91, 192, 222, 0.9);
 }
 
-.logo-grid.tier-title .sponsor-plaque:hover img {
-    transform: scale(1.05);
-    /* Less zoom for the big one */
-}
+/* Mobile adjustment for Fashion and Food Tiers */
+@media (max-width: 768px) {
+    .logo-grid.tier-fashion,
+    .logo-grid.tier-food {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
 
-/* ===== END: NEW SPONSORS SECTION ===== */
+    .logo-grid.tier-fashion .tier-fashion-main,
+    .logo-grid.tier-fashion .tier-fashion-co,
+    .logo-grid.tier-food .tier-food-main,
+    .logo-grid.tier-food .tier-food-co {
+        flex-basis: 90%;
+        max-width: 400px;
+        width: 100%;
+    }
+}
+/* ===== END: UPDATED SPONSORS SECTION (Including Food Tier) ===== */
 
 /* ===== START: NEW CONTACT & VENUE STYLES ===== */
 .contact-venue-section {
