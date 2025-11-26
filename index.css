@@ -1727,7 +1727,7 @@ body::after {
     }
 }
 
-/* ===== START: BROCHURE MODAL STYLES ===== */
+/* ===== BROCHURE MODAL STYLES (Refined Alignment) ===== */
 .brochure-modal {
     display: none;
     position: fixed;
@@ -1736,14 +1736,16 @@ body::after {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(3, 8, 26, 0.8); /* Slightly darker for better focus */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(3, 8, 26, 0.9); /* Darker background for better focus */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.5s ease;
-    padding: 20px; /* Adds safety padding so content doesn't touch edges */
+    
+    /* ADDED: Extra padding prevents the sticker from hitting screen edges */
+    padding: 40px; 
 }
 
 .brochure-modal.show-brochure {
@@ -1753,47 +1755,70 @@ body::after {
 
 .brochure-content {
     position: relative;
-    /* CHANGE 1: Remove fixed width percentages */
-    width: auto; 
+    width: auto;
     max-width: 100%;
-    /* CHANGE 2: Shrink-wrap the container to the image size */
-    display: flex; 
+    display: flex;
     justify-content: center;
+    align-items: center;
     animation: scaleUp 0.5s ease;
+    
+    /* CRITICAL: Allows the sticker to hang OUTSIDE the box */
+    overflow: visible; 
 }
 
-.brochure-content img {
-    /* CHANGE 3: Prioritize Height! */
-    max-height: 85vh; /* Limit image to 85% of screen height */
-    width: auto;      /* Allow width to adjust naturally */
-    max-width: 100%;  /* Ensure width doesn't overflow on mobile */
-    
+/* Main Poster Image Styling */
+.brochure-content img:not(.food-sticker) {
+    max-height: 80vh; /* Slightly reduced to give sticker room at top */
+    width: auto;
+    max-width: 100%;
     display: block;
     border-radius: 8px;
     border: 2px solid var(--accent-red);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-    object-fit: contain; /* Ensures image isn't stretched */
+    object-fit: contain;
+}
+
+/* The "Food" Sticker Styling - DESKTOP DEFAULTS */
+.food-sticker {
+    position: absolute;
+    
+    /* Make it LARGE on desktop */
+    width: 220px; 
+    
+    /* Push it far out to the left so it doesn't cover text */
+    top: -30px; 
+    left: -110px; 
+    
+    /* transform: rotate(-25deg); Nice tilt */
+    z-index: 2002;
+    filter: drop-shadow(8px 8px 15px rgba(0,0,0,0.6)); /* Deep shadow for 3D effect */
+    
+    /* Reset borders */
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    pointer-events: none; /* Let clicks pass through to the image/close button */
 }
 
 /* The Close Button (X) */
 .close-brochure {
     position: absolute;
-    top: -15px;   /* Positioned relative to the image corner */
-    right: -15px; 
-    width: 35px;
-    height: 35px;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
     background-color: var(--accent-red);
     color: white;
     border-radius: 50%;
     text-align: center;
-    line-height: 35px;
-    font-size: 20px;
+    line-height: 40px;
+    font-size: 24px;
     font-weight: bold;
     cursor: pointer;
     border: 2px solid var(--heading-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
-    z-index: 2001; /* Ensure it sits on top of the image */
+    z-index: 2003; /* Higher than sticker */
 }
 
 .close-brochure:hover {
@@ -1806,15 +1831,47 @@ body::after {
     to { transform: scale(1); opacity: 1; }
 }
 
-/* Mobile Adjustment for Close Button */
+/* ===== MOBILE & TABLET ADJUSTMENTS ===== */
+@media (max-width: 900px) {
+    /* Tablet/Small Laptop: Pull it in slightly */
+    .food-sticker {
+        width: 180px;
+        left: -80px;
+        top: -60px;
+    }
+}
+
 @media (max-width: 600px) {
+    .brochure-modal {
+        padding: 20px; /* Reset padding for mobile */
+    }
+
+    .brochure-content {
+        /* Push content down so sticker has room at the top */
+        margin-top: 60px; 
+    }
+
+    .food-sticker {
+        /* MOBILE PERFECT FIT */
+        width: 140px; /* Good readable size on phone */
+        
+        /* Position: Sit mostly ON TOP of the poster frame */
+        top: -65px;  
+        
+        /* Align left edge with poster left edge */
+        left: -10px; 
+        
+        /* Less tilt so it fits tighter */
+        /* transform: rotate(-15deg);  */
+    }
+
     .close-brochure {
-        top: -10px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 18px;
+        top: -15px;
         right: -10px;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 16px;
     }
 }
 /* ===== END: BROCHURE MODAL STYLES ===== */
