@@ -1875,3 +1875,69 @@ body::after {
     }
 }
 /* ===== END: BROCHURE MODAL STYLES ===== */
+
+/* Registration Alert Bar */
+#registration-alert {
+    background: linear-gradient(90deg, #b92b27 0%, #1565C0 100%); /* Attention-grabbing gradient */
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    position: fixed; /* Sticks to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000; /* Ensures it sits on top of your navbar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-family: 'Inter', sans-serif;
+    animation: slideDown 0.5s ease-out;
+}
+
+.alert-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.close-alert {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.close-alert:hover {
+    opacity: 1;
+}
+
+/* Animation to make it slide in nicely */
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* Push the rest of the site down slightly so the navbar isn't covered */
+body {
+    padding-top: 50px; /* Adjust based on bar height */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    #registration-alert {
+        padding: 10px;
+    }
+    .alert-content {
+        font-size: 13px;
+        flex-direction: row;
+        text-align: left;
+    }
+    body {
+        padding-top: 60px;
+    }
+}
