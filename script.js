@@ -288,6 +288,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     // ===== END: BROCHURE POPUP LOGIC =====
-
+    
 }); // This is the end of your DOMContentLoaded
 // });
+
+function closeAlert() {
+    const alertBox = document.getElementById('registration-alert');
+    if (alertBox) {
+        alertBox.style.display = 'none';
+        // Remove the padding from body so the nav goes back to top
+        document.body.style.paddingTop = '0';
+    }
+}
